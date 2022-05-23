@@ -1,0 +1,4 @@
+__pycache__
+debug*
+*.txt
+.DS_Store
