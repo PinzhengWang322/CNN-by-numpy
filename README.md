@@ -59,7 +59,7 @@ class CNN_Net(nn.Module):
 
 
 
-![Figure_1](/Users/wangpinzheng/Desktop/gitcode/CNN-5.24/pics/Figure_1.png)
+![Figure_1](pics/Figure_1.png)
 
 能在3个回合内到达95%以上的准确度
 
@@ -123,7 +123,7 @@ The main structure is shown in pytorch above, with two layers of convolution lay
 
 ### Effect demonstration
 
-![Figure_1](/Users/wangpinzheng/Desktop/gitcode/CNN-5.24/pics/Figure_1.png)
+![Figure_1](pics/Figure_1.png)
 
 
 Able to achieve more than 95% accuracy in 3 epochs
