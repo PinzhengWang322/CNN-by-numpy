@@ -67,7 +67,7 @@ class CNN_Net(nn.Module):
 
 
 
-#CNN-by-numpy(English)
+# CNN-by-numpy(English)
 
 This is a project that mainly uses numpy to implement a CNN and completes the minist classification task.
 
@@ -99,7 +99,7 @@ python main.py
 --model              STR           Use cnn model or linear model  Default is "cnn".
 ```
 
-###Model structure:
+### Model structure:
 
 ```python
 class CNN_Net(nn.Module):
