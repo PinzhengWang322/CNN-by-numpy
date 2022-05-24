@@ -18,9 +18,9 @@ python main.py
 ```
 --batch_size         INT           Batch size.                    Default is 128.    
 --lr                 FLOAT         Learning rate.                 Default is 0.001.
---momentum			 FLOAT         Momentum of SGD.				  Default is 0.9.
---image_path		 STR    	   The path of minist image path. 
---label_path  	     STR    	   The path of minist label path. 
+--momentum.          FLOAT         Momentum of SGD.               Default is 0.9.
+--image_path         STR    	   The path of minist image path. 
+--label_path         STR    	   The path of minist label path. 
 --epoch_num          INT           The number of epochs.          Default is 3.
 --normalize_x        BOOL          Whether to normalize the input Default is True.
 --model              STR           Use cnn model or linear model  Default is "cnn".
@@ -91,9 +91,9 @@ python main.py
 ```
 --batch_size         INT           Batch size.                    Default is 128.    
 --lr                 FLOAT         Learning rate.                 Default is 0.001.
---momentum			 FLOAT         Momentum of SGD.				  Default is 0.9.
---image_path		 STR    	   The path of minist image path. 
---label_path  	     STR    	   The path of minist label path. 
+--momentum.          FLOAT         Momentum of SGD.               Default is 0.9.
+--image_path         STR    	   The path of minist image path. 
+--label_path         STR    	   The path of minist label path. 
 --epoch_num          INT           The number of epochs.          Default is 3.
 --normalize_x        BOOL          Whether to normalize the input Default is True.
 --model              STR           Use cnn model or linear model  Default is "cnn".
