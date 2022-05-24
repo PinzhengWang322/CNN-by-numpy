@@ -10,13 +10,12 @@ class CNN_Net(nn.Module):
         self.pool = nn.MaxPool2d(2, 2)
         self.conv2 = nn.Conv2d(6, 16, 5)
         self.linear1 = nn.Linear(16 * 4 * 4, 120)
-        self.linear2 = nn.Linear(120, 10)
+        self.linear2 = nn.Linear(120,10)
 
     def forward(self, x):
         x = self.pool(F.relu(self.conv1(x)))
         x = self.pool(F.relu(self.conv2(x)))
-        # print(x[0,0,:3,:3])
-        x = torch.flatten(x, 1) # flatten all dimensions except batch
+        x = torch.flatten(x, 1)
         x = F.relu(self.linear1(x))
         x = self.linear2(x)
         return x

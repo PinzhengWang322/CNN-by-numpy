@@ -16,10 +16,9 @@ def evaluate(model, data, args):
     out = model.forward(X)
     predicted = np.argmax(out, axis=1)
     
-
     hit = 0
     for idx, i in enumerate(predicted):
         if i == y[idx][0]:
             hit += 1
-            
+    
     return hit / y.shape[0]

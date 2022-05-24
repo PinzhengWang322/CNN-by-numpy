@@ -31,13 +31,13 @@ class Linear():
 
         return d_in
 
-    def backward(self, alpha=0.001):
+    def backward(self, alpha=0.001, momentum=0.9):
         self.W -= alpha * self.w_gradient
-        # print(self.w_gradient[3])
         self.b -= alpha * self.b_gradient
         # zero gradient
-        self.w_gradient = np.zeros(self.W.shape)
-        self.b_gradient = np.zeros(self.b.shape)
+        self.w_gradient *= momentum
+        self.b_gradient *= momentum
+        return
 
 if __name__ == '__main__':
     img = np.array([[1, 2, 3], [8, 7, 6]])

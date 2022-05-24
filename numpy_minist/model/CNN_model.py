@@ -8,7 +8,7 @@ from activation import *
 import time
 
 class CNN_Net():
-    def __init__(self):
+    def __init__(self, args):
         super().__init__()
         self.conv1 = Conv2d(1,6,5)
         self.conv2 = Conv2d(6,16,5)
@@ -19,6 +19,8 @@ class CNN_Net():
         self.relu3 = Relu()
         self.linear1 = Linear(16 * 4 * 4, 120)
         self.linear2 = Linear(120, 10)
+        self.lr = args.lr
+        self.momentum = args.momentum
 
     def forward(self, x):
         x = self.conv1.forward(x)
@@ -28,8 +30,6 @@ class CNN_Net():
         x = self.conv2.forward(x)
         x = self.relu2.forward(x)
         x = self.pool2.forward(x)
-
-        # print(x[0,0,:3,:3])
         
         x = x.reshape(x.shape[0], -1)
 
@@ -58,13 +58,13 @@ class CNN_Net():
         d_out = self.relu1.gradient(d_out)
         d_out = self.conv1.gradient(d_out)
 
-        print(self.conv1.w_gradient[:2,:2,:3,:3])
+        # print(self.conv1.w_gradient[:2,:2,:3,:3])
 
-        self.linear2.backward()
-        self.linear1.backward()
+        self.linear2.backward(self.lr, self.momentum)
+        self.linear1.backward(self.lr, self.momentum)
 
-        self.conv2.backward()
-        self.conv1.backward()
+        self.conv2.backward(self.lr, self.momentum)
+        self.conv1.backward(self.lr, self.momentum)
         return 
 
 if __name__ == '__main__':

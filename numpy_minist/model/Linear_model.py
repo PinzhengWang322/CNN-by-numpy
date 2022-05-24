@@ -4,11 +4,13 @@ from layers.linear import *
 from activation import *
 
 class Linear_Net():
-    def __init__(self):
+    def __init__(self, args):
         super().__init__()
         self.linear1 = Linear(784, 300)
         self.linear2 = Linear(300, 10)
         self.relu1 = Relu()
+        self.lr = args.lr
+        self.momentum = args.momentum
 
     def forward(self, x):
         x = self.linear1.forward(x)
@@ -23,8 +25,8 @@ class Linear_Net():
         d_out = self.linear1.gradient(d_out)
 
         
-        self.linear2.backward()
-        self.linear1.backward()
+        self.linear2.backward(self.lr, self.momentum)
+        self.linear1.backward(self.lr, self.momentum)
         return 
 
 if __name__ == '__main__':

@@ -21,13 +21,13 @@ parser = argparse.ArgumentParser(description='Train a convolutional neural netwo
 parser.add_argument('--batch_size', default=128, type=int)
 parser.add_argument('--image_path', default="dataset/train-images-idx3-ubyte", type=str)
 parser.add_argument('--label_path', default="dataset/train-labels-idx1-ubyte", type=str)
-parser.add_argument('--epoch_num', default=10, type=int)
+parser.add_argument('--epoch_num', default=1, type=int)
 parser.add_argument('--normalize_input', default=True, type=str2bool)
 parser.add_argument('--normalize_w', default=True, type=str2bool)
 parser.add_argument('--model', default='cnn', type=str)
 args = parser.parse_args()
 
-Proportion = [0.8, 0.1, 0.1] # proportion of train, valid and test data
+Proportion = [0.98, 0.01, 0.01] # proportion of train, valid and test data
 
 if __name__ == '__main__':
 	train_data, valid_data, test_data = split_data(Proportion, args)
@@ -46,8 +46,7 @@ if __name__ == '__main__':
 				pass # just ignore those failed init layers
 
 	criterion = nn.CrossEntropyLoss()
-	# optimizer = optim.SGD(net.parameters(), lr=0.001, momentum=0.9)
-	optimizer = optim.SGD(net.parameters(), lr=0.001)#, momentum=0.9)
+	optimizer = optim.SGD(net.parameters(), lr=0.001, momentum=0.9)
 	for e in range(1, args.epoch_num + 1):
 		for step in range(train_data[1].shape[0] // args.batch_size):
 			X, y = sampler.next_batch()
@@ -67,7 +66,8 @@ if __name__ == '__main__':
 			optimizer.step()
 			optimizer.zero_grad()
 
-			print(e, loss.item(), evaluate(net, valid_data, args))
+			if (step % 20 == 0):
+				print(evaluate(net, valid_data, args))
 	
 
 
