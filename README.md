@@ -28,7 +28,7 @@ python main.py
 
 
 
-###模型结构：
+### 模型结构：
 
 ```python
 class CNN_Net(nn.Module):
